@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'inventario',
 ]
 
 MIDDLEWARE = [
@@ -68,12 +69,25 @@ WSGI_APPLICATION = 'App1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / env.str('DATABASE_NAME'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / env.str('DATABASE_NAME'),
+        'ENGINE'  :'django.db.backends.postgresql',
+        'NAME'    : env.str('DB_NAME'),
+        'USER'    : env.str('DB_USER'),
+        'PASSWORD': env.str('DB_PASSWORD'),
+        'HOST'    : env.str('DB_HOST'),
+        'PORT'    : env.int('DB_PORT')
+            
     }
 }
+
 
 
 # Password validation
